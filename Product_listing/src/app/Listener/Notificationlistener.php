@@ -60,4 +60,22 @@ class Notificationlistener extends Injectable
         }
         return $data;
     }
+
+    public function beforeHandleRequest($obj22, $obj225, $data22)
+    {
+        $aclfile = APP_PATH . "/security/acl.cache";
+        if (true == is_file($aclfile)) {
+            $acl = unserialize(
+                file_get_contents($aclfile)
+            );
+
+            $role = $this->request->get("rolee");
+            // die($role);
+            if (!$role || true !== $acl->isAllowed($role, ucwords($this->router->getControllerName()), $this->router->getActionName())) {
+                die("Access Denied :( ");
+            }
+        } else {
+            die("WE DONT FIMD ANY KIND OF CACHE FILE");
+        }
+    }
 }
