@@ -2,6 +2,6 @@
 
 use Phalcon\Mvc\Collection;
 
-Class Movies extends Collection{
-    
+class Movies extends Collection
+{
 }

@@ -26,7 +26,7 @@ class SettingController extends Controller
                 $Dzipcode = $this->request->getPost("Dzipcode");
 
                 $arr5 = array(
-                    'sid'=>5,
+                    'sid' => 5,
                     'dtag' => $tag,
                     'dprice' => $Dprice,
                     'dstock' => $Dstock,

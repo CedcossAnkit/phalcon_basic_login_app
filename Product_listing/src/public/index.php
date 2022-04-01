@@ -37,7 +37,6 @@ $container = new FactoryDefault();
 $loader->registerNamespaces([
     'App\Components' => APP_PATH . "/components",
     'App\Listener' => APP_PATH . "/Listener",
-    ''
 
 ]);
 
@@ -135,6 +134,12 @@ $eventmanager->attach(
     new App\Listener\Notificationlistener()
 );
 
+$eventmanager->attach(
+    'application:beforeHandleRequest',
+    new App\Listener\Notificationlistener()
+);
+
+$application->setEventsManager($eventmanager);
 try {
     // Handle the request
     $response = $application->handle(
@@ -145,4 +150,3 @@ try {
 } catch (\Exception $e) {
     echo 'Exception: ', $e->getMessage();
 }
-

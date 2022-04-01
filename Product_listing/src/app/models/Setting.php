@@ -9,5 +9,4 @@ class Setting extends Model
     public string $dprice;
     public string $dstock;
     public string $dzipcode;
-
 }

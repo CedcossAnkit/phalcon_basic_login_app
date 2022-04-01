@@ -25,4 +25,33 @@ class Helper
             return true;
         }
     }
+
+    public function getControllerName()
+    {
+        $foldername = APP_PATH . "/controllers/";
+        $dir = opendir($foldername);
+        $file = scandir($foldername);
+        // echo "<pre>";
+        // var_dump($file);
+        closedir($dir);
+
+        // print_r($file);
+
+        $arr = array();
+
+        foreach ($file as $key => $value) {
+            $b = "";
+            if ($value != "." and $value != "..") {
+                $index = strpos($value, "Controller.php");
+                // echo $index . "<br>";
+                for ($i = 0; $i < $index; $i++) {
+                    $b = $b . $value[$i];
+                }
+                // echo $b;
+                array_push($arr, $b);
+            }
+        }
+
+        return $arr;
+    }
 }

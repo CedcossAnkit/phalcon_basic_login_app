@@ -9,5 +9,4 @@ class Products extends Model
     public string $Tags;
     public string $Price;
     public string $Stock;
-
 }

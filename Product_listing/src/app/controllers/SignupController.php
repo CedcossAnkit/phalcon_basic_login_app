@@ -2,13 +2,15 @@
 
 use Phalcon\Mvc\Controller;
 
-class SignupController extends Controller{
+class SignupController extends Controller
+{
 
-    public function IndexAction(){
-
+    public function IndexAction()
+    {
     }
 
-    public function registerAction(){
+    public function registerAction()
+    {
         $user = new Users();
 
         $user->assign(
@@ -23,10 +25,10 @@ class SignupController extends Controller{
 
         $this->view->success = $success;
 
-        if($success){
+        if ($success) {
             $this->view->message = "Register succesfully";
-        }else{
-            $this->view->message = "Not Register succesfully due to following reason: <br>".implode("<br>", $user->getMessages());
+        } else {
+            $this->view->message = "Not Register succesfully due to following reason: <br>" . implode("<br>", $user->getMessages());
         }
     }
 }
